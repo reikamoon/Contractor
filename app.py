@@ -18,7 +18,7 @@ def index():
     """Return homepage."""
     return render_template('home.html', msg='Welcome to Fox Finder!')
 
-@app.route('/animals/<animal_id>')
+@app.route('/animals/<animal_id>',methods=['GET'])
 def show_animal(animal_id):
     """Show a single animal."""
     animal = animals.find_one({'_id': ObjectId(animal_id)})

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Fox Finder</h1>
+
+<a href="/new">New Fox</a>
+
+<ul>
+{% for animal in animals %}
+
+    <li>
+        <a href="/animals/{{animals._id}}">{{animals.name}}</a>
+    </li>
+
+{% endfor %}
+</ul>
+
+{% endblock %}
