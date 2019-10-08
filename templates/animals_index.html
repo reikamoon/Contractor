@@ -1,0 +1,15 @@
+<!-- templates/playlists_index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to Fox Finder!</h1>
+
+<div class='row'>
+{% for animal in animals %}
+    <div class='col-md-3'>
+            <h2><a href='/animals/{{ animal._id }}'>{{ playlist.title }}</a></h2>
+            <small>{{ animal.description }}</small>
+          </div>
+{% endfor %}
+</div>
+{% endblock %}
