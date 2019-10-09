@@ -30,6 +30,12 @@ def show_animal(animal_id):
     animal = animals.find_one({'_id': ObjectId(animal_id)})
     return render_template('show_animal.html', animal=animal)
 
+@app.route('/animals/<animal_id>/edit')
+def animal_edit(animal_id):
+    """Show the edit form for a playlist."""
+    animal = animals.find_one({'_id': ObjectId(animal_id)})
+    return render_template('animal_edit.html', animal=animal, title='Edit Animal')
+
 
 
 

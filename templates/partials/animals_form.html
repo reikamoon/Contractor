@@ -1,0 +1,41 @@
+<!-- templates/partials/playlists_form.html -->
+
+<fieldset>
+  <legend>Edit Animal</legend>
+  <!-- NAME -->
+  <div class='form-group'>
+      <label for='animal-name'>Name</label><br>
+      <input class='form-control' id='name' type='text' name='name' value='{{ animal.name }}'/>
+  </div>
+
+  <!-- SPECIES -->
+  <div class='form-group'>
+      <label for='animal-species'>Species</label><br>
+      <input class='form-control' id='species' type='text' name='species' value='{{ animal.species }}' />
+  </div>
+
+  <!-- BREED -->
+  <div class='form-group'>
+      <label for='animal-breed'>Species</label><br>
+      <input class='form-control' id='breed' type='text' name='breed' value='{{ animal.breed }}' />
+  </div>
+
+  <!-- COLOR -->
+  <div class='form-group'>
+      <label for='animal-color'>Color</label><br>
+      <input class='form-control' id='color' type='text' name='color' value='{{ animal.color }}' />
+  </div>
+
+  <!-- PRICE -->
+  <div class='form-group'>
+      <label for='animal-price'>Price</label><br>
+      <input class='form-control' id='price' type='text' name='price' value='{{ animal.price }}' />
+  </div>
+
+  <!-- IMAGE -->
+  <div class='form-group'>
+      <label for='animal-image'>Image</label><br/>
+      <p class='text-muted'>Add image url here:</p>
+      <textarea class='form-control' id='animal-image' name='image' rows='1' />{{ "\n".join(animal.image) }}</textarea>
+  </div>
+</fieldset>
