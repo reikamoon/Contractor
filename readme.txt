@@ -8,3 +8,4 @@ Fox Picture: Linnea Sandbakk @linneasandbakk
 Wolf Picture: Philipp Pilz @buchstabenhausen
 Hamster Picture: Ricky Kharawala @sweetmangostudios
 Schnauzer Picture: Diego Millan @diecool
+Zoo Picture: Photo by Nikolay Tchaouchev on Unsplash
