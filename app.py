@@ -14,15 +14,16 @@ animals = db.myanimals
 
 app = Flask(__name__)
 
-# @app.route('/')
+@app.route('/')
 def index():
     """Return homepage."""
     return render_template('home.html', msg="Welcome to Noah's Ark!" )
 
-@app.route('/')
+@app.route('/animals')
 def animals_index():
     """Show all animals."""
     return render_template('animals_index.html',animals=animals.find())
+
 
 @app.route('/animals/<animal_id>',methods=['GET'])
 def show_animal(animal_id):
@@ -52,18 +53,26 @@ def animal_update(animal_id):
         {'$set': updated_animal})
     return redirect(url_for('show_animal', animal_id=animal_id))
 
+@app.route('/animals/new')
+def listings_new():
+    """Create a new listing."""
+    return render_template('animals_new.html', animal={}, title='Add a Listing')
+
 @app.route('/animals/<animal_id>', methods=['POST'])
-def playlists_submit():
+def animals_submit():
     """Submit a new animal."""
     animal = {
-        'name': request.form.get('title'),
-        'description': request.form.get('description'),
-        'videos': request.form.get('videos').split(),
-        'created_at': datetime.now()
+    'name': request.form.get('name'),
+    'species': request.form.get('species'),
+    'breed': request.form.get('breed'),
+    'color': request.form.get('color'),
+    'price': request.form.get('price'),
+    'image': request.form.get('image')
+
     }
     print(animal)
-    animal_id = animals.insert_one(animal).inserted_id
-    return redirect(url_for('show_animal', animal_id=animal_id))
+    animals_id = animals.insert_one(animal).inserted_id
+    return redirect(url_for('animals_index'))
 
 
 

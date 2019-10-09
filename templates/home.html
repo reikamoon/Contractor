@@ -1,1 +1,8 @@
 <!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <center><span class = "title"><h1>Welcome to Noah's Ark</h1></span></center>
+  <center><a href='/animals/new'>Add a Listing</a></center>
+  <center><a href='/animals'>See Our Current Listings!</a></center>
+{% endblock %}
