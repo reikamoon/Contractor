@@ -37,9 +37,9 @@ def animal_edit(animal_id):
     animal = animals.find_one({'_id': ObjectId(animal_id)})
     return render_template('animal_edit.html', animal=animal, title='Edit Animal')
 
-@app.route('/edit/<animal_id>/submit', methods=['POST'])
+@app.route('/edit/<animal_id>', methods=['POST'])
 def animal_update(animal_id):
-    """Submit an edited playlist."""
+    """Submit an edited animal."""
     updated_animal = {
         'name': request.form.get('name'),
         'species': request.form.get('species'),
@@ -58,7 +58,7 @@ def listings_new():
     """Create a new listing."""
     return render_template('animals_new.html', animal={}, title='Add a Listing')
 
-@app.route('/animals/<animal_id>/', methods=['POST'])
+@app.route('/animals/<animal_id>', methods=['POST'])
 def animals_submit():
     """Submit a new animal."""
     animal = {

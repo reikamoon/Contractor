@@ -2,8 +2,15 @@
 
 {% block content %}
 <a href="/">Homepage</a>
+<br><br>
+<a href="/edit/{{animal._id}}">Edit Listing</a>
+<br><br>
+<form action="/delete/{{animal._id}}" method="POST">
+    <button type="submit">Delete Listing</button>
+</form>
 
 <center><h1>Name: {{animal.name}}</h1>
+
 
 <img src="{{animal.img_url}}"><br>
 <span class = 'defaultfont'>
@@ -11,15 +18,8 @@ Species: {{animal.species}}<br>
 Breed: {{animal.breed}}<br>
 Color: {{animal.color}}<br>
 Cost: ${{animal.price}}<br>
+<button class="w3-button w3-black">Buy now<i class="fa fa-shopping-cart"></i></button>
 
-
-<br><br>
-<a href="/edit/{{animal._id}}">Edit Animal</a>
-
-<br><br>
-<form action="/delete/{{animal._id}}" method="POST">
-    <button type="submit">Delete Animal</button>
-</form>
 </center>
 </span>
 
