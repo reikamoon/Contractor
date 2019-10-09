@@ -30,11 +30,40 @@ def show_animal(animal_id):
     animal = animals.find_one({'_id': ObjectId(animal_id)})
     return render_template('show_animal.html', animal=animal)
 
-@app.route('/animals/<animal_id>/edit')
+@app.route('/edit/<animal_id>')
 def animal_edit(animal_id):
     """Show the edit form for a playlist."""
     animal = animals.find_one({'_id': ObjectId(animal_id)})
     return render_template('animal_edit.html', animal=animal, title='Edit Animal')
+
+@app.route('/edit/<animal_id>', methods=['POST'])
+def animal_update(animal_id):
+    """Submit an edited playlist."""
+    updated_animal = {
+        'name': request.form.get('name'),
+        'species': request.form.get('species'),
+        'breed': request.form.get('breed'),
+        'color': request.form.get('color'),
+        'price': request.form.get('price'),
+        'image': request.form.get('image')
+    }
+    animals.update_one(
+        {'_id': ObjectId(animal_id)},
+        {'$set': updated_animal})
+    return redirect(url_for('show_animal', animal_id=animal_id))
+
+@app.route('/animals/<animal_id>', methods=['POST'])
+def playlists_submit():
+    """Submit a new animal."""
+    animal = {
+        'name': request.form.get('title'),
+        'description': request.form.get('description'),
+        'videos': request.form.get('videos').split(),
+        'created_at': datetime.now()
+    }
+    print(animal)
+    animal_id = animals.insert_one(animal).inserted_id
+    return redirect(url_for('show_animal', animal_id=animal_id))
 
 
 

@@ -2,14 +2,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<a href="/">Homepage</a>
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
-        <form method='POST' action='/playlists/{{playlist._id}}'>
+        <form method='POST' action='/animals/{{animal._id}}'>
             <input type='hidden' name='_method' value='PUT'/>
             {% include 'partials/animals_form.html' %}
             <!-- BUTTON -->
             <div class='form-group'>
-                <button class='btn btn-primary' type='submit'>Save Playlist</button>
+                <button class='btn btn-primary' type='submit'>Save Animal</button>
             </div>
         </form>
     </div>
