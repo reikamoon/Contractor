@@ -51,7 +51,7 @@ def animal_update(animal_id):
     animals.update_one(
         {'_id': ObjectId(animal_id)},
         {'$set': updated_animal})
-    return redirect(url_for('show_animal', animal_id=animal_id))
+    return redirect(url_for('show_animal.html', animal_id=animal_id))
 
 @app.route('/animals/new')
 def listings_new():
@@ -59,7 +59,7 @@ def listings_new():
     return render_template('animals_new.html', animal={}, title='Add a Listing')
 
 @app.route('/animals/<animal_id>', methods=['POST'])
-def animals_submit():
+def animal_submit():
     """Submit a new animal."""
     animal = {
     'name': request.form.get('name'),
