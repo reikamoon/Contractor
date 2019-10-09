@@ -3,19 +3,20 @@
 
 {% block content %}
   <center><span class = "title"><h1>Welcome to Noah's Ark</h1></span></center>
+  <center><a href='/'>Homepage</a></center>
   <center><span class = "title"><h1>Catalogue</h1></span></center>
   <center><a href='/animals/new'>Add a Listing</a></center>
 
 <div class='row'>
 {% for animal in animals %}
     <div class='col-md-3'>
-      <center>
-      <a href='/animals/{{animal._id}}'><img src="{{animal.img_url}}"></a>
-      <br>
-      <center><span class = "defaultfont"><a href='animals/{{animal._id}}'>{{animal.name}}</span></a></center>
-      <br>
-      </center>
-          </div>
+        <center>
+          <a href='/animals/{{animal._id}}'><img src="{{animal.img_url}}"></a>
+          <br>
+          <center><span class = "defaultfont"><a href='animals/{{animal._id}}'>{{animal.name}}</span></a></center>
+           <button class="w3-button w3-black">Buy now<i class="fa fa-shopping-cart"></i></button>
+        </center>
+      </div>
 {% endfor %}
 </div>
 {% endblock %}
