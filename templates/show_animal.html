@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<span class = 'defaultfont'>
 <a href="/">Homepage</a>
 
-<h1><span class = 'title'>Name: {{animal.name}}</span></h1>
+<center><h1>Name: {{animal.name}}</h1>
 
 <img src="{{animal.img_url}}"><br>
-
+<span class = 'defaultfont'>
 Species: {{animal.species}}<br>
 Breed: {{animal.breed}}<br>
 Color: {{animal.color}}<br>
@@ -21,6 +20,7 @@ Cost: {{animal.price}}<br>
 <form action="/delete/{{animal._id}}" method="POST">
     <button type="submit">Delete Animal</button>
 </form>
+</center>
 </span>
 
 {% endblock %}
