@@ -56,7 +56,7 @@ class AnimalTests(TestCase):
         """Test editing a single animal."""
         mock_find.return_value = sample_animal
 
-        result = self.client.get(f'/animals/{sample_animal_id}/edit')
+        result = self.client.get(f'edit/{sample_animal_id}')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'Mika', result.data)
 
@@ -65,7 +65,7 @@ class AnimalTests(TestCase):
         """Test submitting a new animal."""
         result = self.client.post('/animals', data=sample_form_data)
 
-        # After submitting, should redirect to that playlist's page
+        # After submitting, should redirect to that animal's page
         self.assertEqual(result.status, '302 FOUND')
         mock_insert.assert_called_with(sample_animal)
 
