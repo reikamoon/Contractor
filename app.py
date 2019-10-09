@@ -72,7 +72,7 @@ def animals_submit():
     }
     print(animal)
     animals_id = animals.insert_one(animal).inserted_id
-    return redirect(url_for('animals_index'))
+    return redirect(url_for('animals_index'animal_id=animal_id))
 
 
 
