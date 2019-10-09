@@ -33,7 +33,7 @@ def show_animal(animal_id):
 
 @app.route('/edit/<animal_id>')
 def animal_edit(animal_id):
-    """Show the edit form for a playlist."""
+    """Show the edit form for an animal."""
     animal = animals.find_one({'_id': ObjectId(animal_id)})
     return render_template('animal_edit.html', animal=animal, title='Edit Animal')
 
@@ -71,8 +71,8 @@ def animals_submit():
 
     }
     print(animal)
-    animals_id = animals.insert_one(animal).inserted_id
-    return redirect(url_for('animals_index'))
+    animal_id = animals.insert_one(animal).inserted_id
+    return redirect(url_for('animals_index', animal_id=animal_id))
 
 @app.route('/animals/<animal_id>/delete', methods=['POST'])
 def animals_delete(animal_id):
