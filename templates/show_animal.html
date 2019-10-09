@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<span class = 'defaultfont'>
 <a href="/">Homepage</a>
 
 <h1>Name: {{animal.name}}</h1>
@@ -21,5 +21,6 @@ Cost: {{animal.price}}<br>
 <form action="/delete/{{animal._id}}" method="POST">
     <button type="submit">Delete Animal</button>
 </form>
+</span>
 
 {% endblock %}
