@@ -1,14 +1,16 @@
-<!-- templates/playlists_index.html -->
+<!-- templates/animals_index.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Welcome to Fox Finder!</h1>
+  <center><span class = "title"><h1>Welcome to Noah's Ark</h1></span></center>
 
 <div class='row'>
 {% for animal in animals %}
     <div class='col-md-3'>
-            <h2><a href='/animals/{{ animal._id }}'>{{ playlist.title }}</a></h2>
-            <small>{{ animal.description }}</small>
+      <center>
+      <a href='/animals/{{animal._id}}'><img src="{{animal.img_url}}"></a>
+      <h1><span class = "defaultfont">{{animal.name}}</span></h1>
+      </center>
           </div>
 {% endfor %}
 </div>
