@@ -10,15 +10,6 @@ host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/myanimals')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 animals = db.myanimals
-#Database not working? Tried to replicate it here?
-# animals.insert_many= ([
-#     {"name" : "Sylvain", "species" : "Fox", "breed" : "Red Fox", "color" : "Red", "price" : "1500", "img_url": "../static/images/foxrz.jpg"},
-#     {"name": "Dimitri", "species": "Lion", "breed": "Panthera Leo Melanochaita", "color": "Blond", "price": "$3500", "img_url": "../static/images/lionrz.jpg"},
-#     {"name": "Felix", "species": "Wolf", "breed": "Gray Wolf", "color": "Gray", "price": "2500", "img_url": "../static/images/wolfrz.jpg"},
-#     {"name" : "Minerva", "species" : "Hamster", "breed" : "Syrian Hamster", "color" : "Beige", "price" : "250", "img_url": "../static/images/hamsterrz.jpg"},
-#     {"name" : "Mika", "species" : "Dog", "breed" : "Schnauzer", "color" : "Gray", "price" : "priceless", "img_url": "../static/images/schanuzerrz.jpg"}
-#
-# ])
 
 app = Flask(__name__)
 
@@ -27,13 +18,13 @@ def index():
     """Return homepage."""
     return render_template('home.html', msg="Welcome to Noah's Ark!" )
 
-@app.route('/animals')
+@app.route('/animals', methods=['GET'])
 def animals_index():
     """Show all animals."""
     return render_template('animals_index.html',animals=animals.find())
 
 
-@app.route('/animals/<animal_id>',methods=['GET'])
+@app.route('/animals/<animal_id>', methods=['GET', 'POST'])
 def show_animal(animal_id):
     """Show a single animal."""
     animal = animals.find_one({'_id': ObjectId(animal_id)})
@@ -59,14 +50,14 @@ def animal_update(animal_id):
     animals.update_one(
         {'_id': ObjectId(animal_id)},
         {'$set': updated_animal})
-    return redirect(url_for('show_animal.html', animal_id=animal_id))
+    return redirect(url_for('show_animal', animal_id=animal_id))
 
 @app.route('/animals/new')
 def listings_new():
     """Create a new listing."""
     return render_template('animals_new.html', animal={}, title='Add a Listing')
 
-@app.route('/animals/<animal_id>', methods=['POST'])
+@app.route('/animals', methods=['POST'])
 def animal_submit():
     """Submit a new animal."""
     animal = {

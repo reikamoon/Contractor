@@ -6,7 +6,7 @@
 <br>
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
-        <form method='POST' action='/animals/{{animal._id}}'>
+        <form method='POST' action='/edit/{{animal._id}}'>
             <input type='hidden' name='_method' value='PUT'/>
             {% include 'partials/animals_form.html' %}
             <!-- BUTTON -->
