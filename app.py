@@ -73,7 +73,7 @@ def animal_submit():
     animal_id = animals.insert_one(animal).inserted_id
     return redirect(url_for('animals_index', animal_id=animal_id))
 
-@app.route('/animals/<animal_id>/delete', methods=['POST'])
+@app.route('/delete/<animal_id>, methods=['POST'])
 def animals_delete(animal_id):
     """Delete one animal."""
     animals.delete_one({'_id': ObjectId(animal_id)})
