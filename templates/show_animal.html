@@ -9,14 +9,14 @@
     <button type="submit">Delete Listing</button>
 </form>
 
-<center><h1>Name: {{animal.name}}</h1>
+<center><h1>Name:{{animal.name}}</h1>
 
 
-<img src="/static/images/{{animal.img_url}}"><br>
+<img src="{{animal.img_url}}" alt= "Insert Image of Animal Here."><br>
 <span class = 'defaultfont'>
-Species: {{animal.species}}<br>
-Breed: {{animal.breed}}<br>
-Color: {{animal.color}}<br>
+Species: (Species here) {{animal.species}}<br>
+Breed: (Breed here) {{animal.breed}}<br>
+Color: (Color of fur/hair here) {{animal.color}}<br>
 Cost: ${{animal.price}}<br>
 <button class="w3-button w3-black">Buy now<i class="fa fa-shopping-cart"></i></button>
 
